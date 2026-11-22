@@ -1,0 +1,967 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>کالانوا | فروشگاه اینترنتی مدرن</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: { sans: ['Vazirmatn', 'sans-serif'] },
+          colors: {
+            brand: {
+              50: '#fff1f2',
+              100: '#ffe4e6',
+              500: '#ef394e',
+              600: '#e11d48',
+              700: '#be123c',
+            }
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    body {
+      font-family: 'Vazirmatn', sans-serif;
+      background-color: #f8f9fa;
+      color: #1e293b;
+    }
+    .no-scrollbar::-webkit-scrollbar { display: none; }
+    .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+  </style>
+</head>
+<body class="antialiased selection:bg-brand-500 selection:text-white">
+
+  <!-- Top Colorful Announcement Strip -->
+  <div class="bg-gradient-to-l from-indigo-600 via-brand-500 to-rose-500 text-white text-xs py-2 px-4 text-center font-medium">
+    <span>جشنواره تخفیف‌های فصلی کالانوا — ارسال رایگان برای سفارش‌های بالای ۲ میلیون تومان + پرداخت در محل</span>
+  </div>
+
+  <!-- Sticky Clean Header -->
+  <header class="sticky top-0 z-40 bg-white/95 backdrop-blur-md border-b border-gray-200/80 shadow-xs">
+    <div class="max-w-[1360px] mx-auto px-4">
+      <!-- Main Header Row -->
+      <div class="h-16 md:h-[72px] flex items-center justify-between gap-4">
+        <!-- Logo + Search -->
+        <div class="flex items-center gap-5 flex-1">
+          <a href="#" class="flex items-center gap-2.5 shrink-0">
+            <div class="w-9 h-9 rounded-xl bg-brand-500 text-white flex items-center justify-center shadow-sm">
+              <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z" />
+              </svg>
+            </div>
+            <div class="leading-none">
+              <span class="font-black text-xl tracking-tight text-gray-900">کالا<span class="text-brand-500">نوا</span></span>
+              <span class="block text-[10px] text-gray-400 font-medium mt-0.5">فروشگاه هوشمند</span>
+            </div>
+          </a>
+
+          <!-- Search Input -->
+          <div class="hidden md:flex flex-1 max-w-2xl relative">
+            <div class="w-full flex items-center bg-[#f0f0f1] hover:bg-gray-200/70 focus-within:bg-white focus-within:ring-2 focus-within:ring-brand-500/20 focus-within:border-brand-500 border border-transparent rounded-lg px-3.5 py-2.5 transition">
+              <svg class="w-5 h-5 text-gray-400 ml-2.5 shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-4.35-4.35M17 11a6 6 0 11-12 0 6 6 0 0112 0z" />
+              </svg>
+              <input id="search-input" type="text" placeholder="جستجو در میان هزاران کالا (موبایل، لپ‌تاپ، کفش، عطر...)" class="bg-transparent w-full text-sm text-gray-700 placeholder-gray-400 focus:outline-none" />
+            </div>
+          </div>
+        </div>
+
+        <!-- Actions -->
+        <div class="flex items-center gap-2.5">
+          <button onclick="openAuthModal()" class="flex items-center gap-2 px-3.5 py-2 rounded-lg border border-gray-200 hover:border-gray-300 hover:bg-gray-50 text-xs md:text-sm font-semibold text-gray-700 transition">
+            <svg class="w-4 h-4 text-gray-600" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z" />
+            </svg>
+            <span class="hidden sm:inline">ورود | ثبت‌نام</span>
+          </button>
+
+          <div class="h-6 w-px bg-gray-200 mx-1 hidden sm:block"></div>
+
+          <button onclick="toggleCart(true)" class="relative p-2.5 rounded-lg hover:bg-gray-100 text-gray-700 transition flex items-center gap-1.5">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="1.9" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M2.25 3h1.386c.51 0 .955.343 1.087.835l.383 1.437M7.5 14.25a3 3 0 00-3 3h15.75m-12.75-3h11.218c1.121-2.3 2.1-4.684 2.924-7.138a60.114 60.114 0 00-16.536-1.84M7.5 14.25L5.106 5.272M6 20.25a.75.75 0 11-1.5 0 .75.75 0 011.5 0zm12.75 0a.75.75 0 11-1.5 0 .75.75 0 011.5 0z" />
+            </svg>
+            <span id="cart-count-badge" class="absolute -top-0.5 -right-0.5 min-w-[20px] h-5 px-1 rounded-md bg-brand-500 text-white text-[11px] font-bold flex items-center justify-center shadow-xs">۰</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Mobile Search -->
+      <div class="md:hidden pb-3">
+        <div class="w-full flex items-center bg-[#f0f0f1] rounded-lg px-3 py-2">
+          <svg class="w-4 h-4 text-gray-400 ml-2" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-4.35-4.35M17 11a6 6 0 11-12 0 6 6 0 0112 0z" />
+          </svg>
+          <input id="mobile-search-input" type="text" placeholder="جستجو در کالانوا..." class="bg-transparent w-full text-xs focus:outline-none" />
+        </div>
+      </div>
+
+      <!-- Sub-Navigation Row -->
+      <div class="hidden md:flex items-center justify-between h-11 text-xs font-medium text-gray-600 border-t border-gray-100">
+        <nav class="flex items-center gap-6">
+          <div class="relative group py-2.5">
+            <button class="flex items-center gap-1.5 font-bold text-gray-800 hover:text-brand-500 transition">
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+              </svg>
+              <span>دسته‌بندی کالاها</span>
+            </button>
+            <!-- Mega Dropdown -->
+            <div class="invisible opacity-0 group-hover:visible group-hover:opacity-100 transition-all duration-200 absolute right-0 top-full w-64 bg-white border border-gray-200 rounded-xl shadow-xl p-2 z-50">
+              <a href="#products-section" onclick="filterProducts('digital')" class="flex items-center justify-between px-3 py-2.5 rounded-lg hover:bg-gray-50 hover:text-brand-500"><span>کالای دیجیتال و موبایل</span><span>←</span></a>
+              <a href="#products-section" onclick="filterProducts('fashion')" class="flex items-center justify-between px-3 py-2.5 rounded-lg hover:bg-gray-50 hover:text-brand-500"><span>مد، پوشاک و کفش</span><span>←</span></a>
+              <a href="#products-section" onclick="filterProducts('beauty')" class="flex items-center justify-between px-3 py-2.5 rounded-lg hover:bg-gray-50 hover:text-brand-500"><span>آرایشی، عطر و سلامت</span><span>←</span></a>
+              <a href="#products-section" onclick="filterProducts('home')" class="flex items-center justify-between px-3 py-2.5 rounded-lg hover:bg-gray-50 hover:text-brand-500"><span>خانه، روشنایی و دکور</span><span>←</span></a>
+            </div>
+          </div>
+
+          <span class="h-4 w-px bg-gray-200"></span>
+          <a href="#amazing-section" class="hover:text-brand-500 transition flex items-center gap-1">
+            <span class="w-1.5 h-1.5 rounded-full bg-brand-500"></span> شگفت‌انگیزها
+          </a>
+          <a href="#supermarket-banner" class="hover:text-emerald-600 transition">سوپرمارکت</a>
+          <a href="#products-section" class="hover:text-brand-500 transition">پرفروش‌ترین‌ها</a>
+          <a href="#colorful-boxes" class="hover:text-brand-500 transition">پیشنهادهای رنگی</a>
+          <a href="#footer" class="hover:text-brand-500 transition">سوالی دارید؟</a>
+        </nav>
+
+        <button class="flex items-center gap-1.5 text-gray-500 hover:text-gray-800 transition">
+          <svg class="w-4 h-4 text-brand-500" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z" />
+            <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z" />
+          </svg>
+          <span>ارسال به تهران</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main class="max-w-[1360px] mx-auto px-4 py-5 space-y-8">
+
+    <!-- 1. Hero Slider + Side Promo Cards -->
+    <section class="grid grid-cols-1 lg:grid-cols-12 gap-4">
+      <!-- Main Slider -->
+      <div class="lg:col-span-9 relative rounded-2xl overflow-hidden border border-gray-200/70 shadow-xs bg-gray-900 h-[240px] sm:h-[340px] md:h-[380px]">
+        <div id="hero-slides" class="w-full h-full relative">
+          <!-- Slide 1 -->
+          <div class="hero-slide absolute inset-0 transition-opacity duration-500 opacity-100">
+            <img src="https://images.unsplash.com/photo-1519558260268-cde7e03a0152?w=1200&q=80&auto=format&fit=crop" alt="تکنولوژی و گجت" class="w-full h-full object-cover opacity-80" />
+            <div class="absolute inset-0 bg-gradient-to-l from-slate-950/90 via-slate-900/50 to-transparent flex flex-col justify-center p-6 sm:p-10 md:p-14 text-white">
+              <span class="w-fit px-3 py-1 rounded-lg bg-brand-500 text-xs font-bold mb-3">فروش ویژه دیجیتال</span>
+              <h1 class="text-2xl sm:text-4xl font-black mb-3 leading-tight max-w-md">نسل جدید گجت‌ها با گارانتی اصلی</h1>
+              <p class="text-slate-200 text-xs sm:text-sm max-w-md mb-5">تخفیف تا ۳۰٪ روی لپ‌تاپ، هدفون و ساعت‌های هوشمند منتخب فقط تا پایان هفته.</p>
+              <a href="#products-section" class="w-fit px-5 py-2.5 rounded-lg bg-white text-gray-900 hover:bg-brand-500 hover:text-white text-xs sm:text-sm font-bold transition">مشاهده و خرید</a>
+            </div>
+          </div>
+          <!-- Slide 2 -->
+          <div class="hero-slide absolute inset-0 transition-opacity duration-500 opacity-0 pointer-events-none">
+            <img src="https://images.unsplash.com/photo-1607082348824-0a96f2a4b9da?w=1200&q=80&auto=format&fit=crop" alt="جشنواره خرید" class="w-full h-full object-cover opacity-85" />
+            <div class="absolute inset-0 bg-gradient-to-l from-indigo-950/90 via-indigo-900/50 to-transparent flex flex-col justify-center p-6 sm:p-10 md:p-14 text-white">
+              <span class="w-fit px-3 py-1 rounded-lg bg-amber-400 text-gray-950 text-xs font-bold mb-3">حراج بزرگ فصل</span>
+              <h2 class="text-2xl sm:text-4xl font-black mb-3 leading-tight max-w-md">خرید اقساطی بدون پیش‌پرداخت</h2>
+              <p class="text-indigo-100 text-xs sm:text-sm max-w-md mb-5">با اعتبار کالانوا همین امروز سفارش بده و هزینه را در ۴ قسط پرداخت کن.</p>
+              <a href="#amazing-section" class="w-fit px-5 py-2.5 rounded-lg bg-amber-400 text-gray-950 hover:bg-amber-300 text-xs sm:text-sm font-bold transition">شگفت‌انگیزهای امروز</a>
+            </div>
+          </div>
+          <!-- Slide 3 -->
+          <div class="hero-slide absolute inset-0 transition-opacity duration-500 opacity-0 pointer-events-none">
+            <img src="https://images.unsplash.com/photo-1617137968427-85924c800a22?w=1200&q=80&auto=format&fit=crop" alt="مد و پوشاک" class="w-full h-full object-cover opacity-80" />
+            <div class="absolute inset-0 bg-gradient-to-l from-emerald-950/90 via-emerald-900/50 to-transparent flex flex-col justify-center p-6 sm:p-10 md:p-14 text-white">
+              <span class="w-fit px-3 py-1 rounded-lg bg-emerald-400 text-gray-950 text-xs font-bold mb-3">کلکسیون استایل</span>
+              <h2 class="text-2xl sm:text-4xl font-black mb-3 leading-tight max-w-md">جدیدترین پوشاک و کتانی‌های اورجینال</h2>
+              <p class="text-emerald-100 text-xs sm:text-sm max-w-md mb-5">ضمانت اصالت کالا و امکان تعویض سایز تا ۷ روز پس از تحویل.</p>
+              <a href="#products-section" onclick="filterProducts('fashion')" class="w-fit px-5 py-2.5 rounded-lg bg-white text-gray-900 hover:bg-emerald-400 text-xs sm:text-sm font-bold transition">خرید از بخش مد</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Slider Arrows & Dots -->
+        <button onclick="changeSlide(-1)" class="hidden sm:flex absolute right-4 bottom-4 w-9 h-9 rounded-lg bg-white/90 hover:bg-white text-gray-800 items-center justify-center shadow transition">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" /></svg>
+        </button>
+        <button onclick="changeSlide(1)" class="hidden sm:flex absolute right-14 bottom-4 w-9 h-9 rounded-lg bg-white/90 hover:bg-white text-gray-800 items-center justify-center shadow transition">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" /></svg>
+        </button>
+        <div id="hero-dots" class="absolute bottom-5 left-1/2 -translate-x-1/2 flex items-center gap-1.5">
+          <button onclick="goToSlide(0)" class="dot w-6 h-1.5 rounded-full bg-white transition-all"></button>
+          <button onclick="goToSlide(1)" class="dot w-2 h-1.5 rounded-full bg-white/50 transition-all"></button>
+          <button onclick="goToSlide(2)" class="dot w-2 h-1.5 rounded-full bg-white/50 transition-all"></button>
+        </div>
+      </div>
+
+      <!-- 2 Colorful Side Cards next to Hero -->
+      <div class="lg:col-span-3 grid grid-cols-2 lg:grid-cols-1 gap-4">
+        <a href="#products-section" onclick="filterProducts('digital')" class="rounded-2xl bg-gradient-to-br from-sky-500 to-indigo-600 p-5 text-white flex flex-col justify-between relative overflow-hidden group shadow-xs">
+          <div>
+            <span class="inline-block text-[11px] font-bold bg-white/20 px-2.5 py-1 rounded-lg mb-2">تحویل ۲ ساعته</span>
+            <h3 class="font-extrabold text-base sm:text-lg leading-snug">لپ‌تاپ و صوتی‌های پرفروش</h3>
+          </div>
+          <div class="flex items-end justify-between mt-3">
+            <span class="text-xs font-bold underline-offset-4 group-hover:underline">مشاهده کالاها ←</span>
+            <img src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=200&q=80&auto=format&fit=crop" alt="هدفون" class="w-16 h-16 rounded-xl object-cover shadow-md group-hover:scale-105 transition" />
+          </div>
+        </a>
+
+        <a href="#products-section" onclick="filterProducts('beauty')" class="rounded-2xl bg-gradient-to-br from-amber-500 to-orange-600 p-5 text-white flex flex-col justify-between relative overflow-hidden group shadow-xs">
+          <div>
+            <span class="inline-block text-[11px] font-bold bg-white/20 px-2.5 py-1 rounded-lg mb-2">تا ۴۰٪ تخفیف</span>
+            <h3 class="font-extrabold text-base sm:text-lg leading-snug">عطر، زیبایی و اکسسوری لوکس</h3>
+          </div>
+          <div class="flex items-end justify-between mt-3">
+            <span class="text-xs font-bold underline-offset-4 group-hover:underline">خرید کنید ←</span>
+            <img src="https://images.unsplash.com/photo-1627384113743-6bd5a479fffd?w=200&q=80&auto=format&fit=crop" alt="عطر" class="w-16 h-16 rounded-xl object-cover shadow-md group-hover:scale-105 transition" />
+          </div>
+        </a>
+      </div>
+    </section>
+
+    <!-- 2. Quick Service Pastel Colorful Boxes -->
+    <section class="bg-white rounded-2xl border border-gray-200/80 p-4 sm:p-5">
+      <div class="grid grid-cols-4 lg:grid-cols-8 gap-3 sm:gap-4 text-center">
+        <a href="#amazing-section" class="flex flex-col items-center gap-2 group">
+          <div class="w-13 h-13 p-3 rounded-xl bg-rose-50 text-rose-600 group-hover:bg-rose-500 group-hover:text-white transition">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 13.5l10.5-11.25L12 10.5h8.25L9.75 21.75 12 13.5H3.75z" /></svg>
+          </div>
+          <span class="text-xs font-semibold text-gray-700">کالانوا جت</span>
+        </a>
+        <a href="#products-section" class="flex flex-col items-center gap-2 group">
+          <div class="w-13 h-13 p-3 rounded-xl bg-indigo-50 text-indigo-600 group-hover:bg-indigo-600 group-hover:text-white transition">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 8.25h19.5M2.25 9h19.5m-16.5 5.25h6m-6 2.25h3m-3.75 3h15a2.25 2.25 0 002.25-2.25V6.75A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25v10.5A2.25 2.25 0 004.5 19.5z" /></svg>
+          </div>
+          <span class="text-xs font-semibold text-gray-700">خرید اقساطی</span>
+        </a>
+        <a href="#colorful-boxes" class="flex flex-col items-center gap-2 group">
+          <div class="w-13 h-13 p-3 rounded-xl bg-emerald-50 text-emerald-600 group-hover:bg-emerald-600 group-hover:text-white transition">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9.568 3H5.25A2.25 2.25 0 003 5.25v4.318c0 .597.237 1.17.659 1.591l9.581 9.581c.699.699 1.78.872 2.607.33a18.095 18.095 0 005.223-5.223c.542-.827.369-1.908-.33-2.607L11.16 3.66A2.25 2.25 0 009.568 3z" /></svg>
+          </div>
+          <span class="text-xs font-semibold text-gray-700">تخفیف‌های روز</span>
+        </a>
+        <a href="#products-section" onclick="filterProducts('digital')" class="flex flex-col items-center gap-2 group">
+          <div class="w-13 h-13 p-3 rounded-xl bg-sky-50 text-sky-600 group-hover:bg-sky-600 group-hover:text-white transition">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M10.5 1.5H8.25A2.25 2.25 0 006 3.75v16.5a2.25 2.25 0 002.25 2.25h7.5A2.25 2.25 0 0018 20.25V3.75a2.25 2.25 0 00-2.25-2.25H13.5m-3 0V3h3V1.5m-3 0h3" /></svg>
+          </div>
+          <span class="text-xs font-semibold text-gray-700">موبایل کارکرده</span>
+        </a>
+        <a href="#products-section" onclick="filterProducts('fashion')" class="flex flex-col items-center gap-2 group">
+          <div class="w-13 h-13 p-3 rounded-xl bg-amber-50 text-amber-600 group-hover:bg-amber-500 group-hover:text-white transition">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15.75 10.5V6a3.75 3.75 0 10-7.5 0v4.5m11.356-1.993l1.263 12c.07.665-.45 1.243-1.119 1.243H4.25a1.125 1.125 0 01-1.12-1.243l1.264-12A1.125 1.125 0 015.513 7.5h12.974c.576 0 1.059.435 1.119 1.007z" /></svg>
+          </div>
+          <span class="text-xs font-semibold text-gray-700">حراج مد</span>
+        </a>
+        <a href="#supermarket-banner" class="flex flex-col items-center gap-2 group">
+          <div class="w-13 h-13 p-3 rounded-xl bg-teal-50 text-teal-600 group-hover:bg-teal-600 group-hover:text-white transition">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M8.25 18.75a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m3 0h6m-9 0H3.375a1.125 1.125 0 01-1.125-1.125V14.25m17.25 4.5a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m3 0h1.125c.621 0 1.129-.504 1.09-1.124a17.902 17.902 0 00-3.213-9.193 2.056 2.056 0 00-1.58-.86H14.25M16.5 18.75h-2.25m0-11.177v-.958c0-.568-.422-1.048-.987-1.106a48.554 48.554 0 00-10.026 0 1.106 1.106 0 00-.987 1.106v7.635m12-6.677v6.677m0 4.5v-4.5m0 0h-12" /></svg>
+          </div>
+          <span class="text-xs font-semibold text-gray-700">ارسال رایگان</span>
+        </a>
+        <a href="#products-section" class="flex flex-col items-center gap-2 group">
+          <div class="w-13 h-13 p-3 rounded-xl bg-purple-50 text-purple-600 group-hover:bg-purple-600 group-hover:text-white transition">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M21 11.25v8.25a1.5 1.5 0 01-1.5 1.5H5.25a1.5 1.5 0 01-1.5-1.5v-8.25M12 4.875A2.625 2.625 0 109.375 7.5H12m0-2.625V7.5m0-2.625A2.625 2.625 0 1114.625 7.5H12m0 0V21m-8.625-9.75h18c.621 0 1.125-.504 1.125-1.125v-1.5c0-.621-.504-1.125-1.125-1.125h-18c-.621 0-1.125.504-1.125 1.125v1.5c0 .621.504 1.125 1.125 1.125z" /></svg>
+          </div>
+          <span class="text-xs font-semibold text-gray-700">کارت هدیه</span>
+        </a>
+        <a href="#categories-section" class="flex flex-col items-center gap-2 group">
+          <div class="w-13 h-13 p-3 rounded-xl bg-gray-100 text-gray-600 group-hover:bg-gray-800 group-hover:text-white transition">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M6.75 12a.75.75 0 11-1.5 0 .75.75 0 011.5 0zM12.75 12a.75.75 0 11-1.5 0 .75.75 0 011.5 0zM18.75 12a.75.75 0 11-1.5 0 .75.75 0 011.5 0z" /></svg>
+          </div>
+          <span class="text-xs font-semibold text-gray-700">بیشتر</span>
+        </a>
+      </div>
+    </section>
+
+    <!-- 3. Amazing Offers Colorful Slider Box (Digikala Iconic Section) -->
+    <section id="amazing-section" class="relative rounded-2xl bg-gradient-to-l from-[#ef394e] via-[#e62e4b] to-[#c81e46] p-4 sm:p-6 shadow-sm">
+      <div class="flex items-center justify-between lg:hidden text-white mb-4">
+        <div class="flex items-center gap-2">
+          <span class="font-black text-lg">پیشنهاد شگفت‌انگیز</span>
+          <span id="mobile-timer" class="bg-white text-brand-600 font-mono font-bold text-xs px-2.5 py-1 rounded-lg">۰۴:۲۸:۱۵</span>
+        </div>
+        <a href="#products-section" class="text-xs font-bold">مشاهده همه ←</a>
+      </div>
+
+      <div class="flex items-stretch gap-3">
+        <!-- Desktop Intro Card -->
+        <div class="hidden lg:flex w-44 shrink-0 flex-col items-center justify-between text-white py-4 px-2 text-center">
+          <div>
+            <div class="w-14 h-14 mx-auto mb-3 rounded-2xl bg-white/15 flex items-center justify-center">
+              <svg class="w-8 h-8" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M9.813 15.904L9 18.75l-.813-2.846a4.5 4.5 0 00-3.09-3.09L2.25 12l2.846-.813a4.5 4.5 0 003.09-3.09L9 5.25l.813 2.846a4.5 4.5 0 003.09 3.09L15.75 12l-2.846.813a4.5 4.5 0 00-3.09 3.09z" />
+              </svg>
+            </div>
+            <h2 class="font-black text-xl leading-snug">پیشنهاد<br>شگفت‌انگیز</h2>
+          </div>
+
+          <div class="bg-white/15 backdrop-blur-sm rounded-xl px-3 py-2 w-full">
+            <span class="block text-[11px] text-rose-100 mb-1">زمان باقی‌مانده</span>
+            <span id="desktop-timer" class="font-mono font-black text-base tracking-wider">۰۴:۲۸:۱۵</span>
+          </div>
+
+          <a href="#products-section" class="text-xs font-bold hover:underline">مشاهده همه ←</a>
+        </div>
+
+        <!-- Scrollable Product Cards -->
+        <div class="relative flex-1 overflow-hidden">
+          <div id="amazing-slider" class="flex gap-3 overflow-x-auto no-scrollbar scroll-smooth pb-1">
+            <!-- Injected via JS -->
+          </div>
+
+          <button onclick="scrollAmazing(-1)" class="hidden md:flex absolute right-2 top-1/2 -translate-y-1/2 w-9 h-9 rounded-full bg-white/95 border border-gray-200 shadow-md items-center justify-center text-gray-700 hover:text-brand-500 transition">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M8.25 4.5l7.5 7.5-7.5 7.5" /></svg>
+          </button>
+          <button onclick="scrollAmazing(1)" class="hidden md:flex absolute left-2 top-1/2 -translate-y-1/2 w-9 h-9 rounded-full bg-white/95 border border-gray-200 shadow-md items-center justify-center text-gray-700 hover:text-brand-500 transition">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15.75 19.5L8.25 12l7.5-7.5" /></svg>
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4. 4-Column Colorful Modern Promo Boxes -->
+    <section id="colorful-boxes" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+      <div onclick="filterProducts('digital'); document.getElementById('products-section').scrollIntoView({behavior:'smooth'})" class="cursor-pointer rounded-2xl bg-gradient-to-br from-blue-600 to-indigo-700 p-5 text-white flex items-center justify-between gap-3 hover:-translate-y-1 transition shadow-xs">
+        <div>
+          <span class="text-[11px] font-bold bg-white/20 px-2 py-0.5 rounded-md">جدیدترین‌ها</span>
+          <h3 class="font-extrabold text-base mt-2">موبایل و پرچمداران</h3>
+          <p class="text-xs text-blue-100 mt-1">ارسال فوری + رجیستر شده</p>
+        </div>
+        <img src="https://images.unsplash.com/photo-1603921326210-6edd2d60ca68?w=240&q=80&auto=format&fit=crop" alt="موبایل" class="w-20 h-20 rounded-xl object-cover shadow-md shrink-0" />
+      </div>
+
+      <div onclick="filterProducts('fashion'); document.getElementById('products-section').scrollIntoView({behavior:'smooth'})" class="cursor-pointer rounded-2xl bg-gradient-to-br from-orange-500 to-rose-600 p-5 text-white flex items-center justify-between gap-3 hover:-translate-y-1 transition shadow-xs">
+        <div>
+          <span class="text-[11px] font-bold bg-white/20 px-2 py-0.5 rounded-md">پرفروش هفته</span>
+          <h3 class="font-extrabold text-base mt-2">کتانی و استایل ورزشی</h3>
+          <p class="text-xs text-orange-100 mt-1">ضمانت اصالت و تعویض</p>
+        </div>
+        <img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=240&q=80&auto=format&fit=crop" alt="کتانی" class="w-20 h-20 rounded-xl object-cover shadow-md shrink-0" />
+      </div>
+
+      <div onclick="filterProducts('beauty'); document.getElementById('products-section').scrollIntoView({behavior:'smooth'})" class="cursor-pointer rounded-2xl bg-gradient-to-br from-fuchsia-600 to-purple-700 p-5 text-white flex items-center justify-between gap-3 hover:-translate-y-1 transition shadow-xs">
+        <div>
+          <span class="text-[11px] font-bold bg-white/20 px-2 py-0.5 rounded-md">تخفیف تا ۳۵٪</span>
+          <h3 class="font-extrabold text-base mt-2">آرایشی و مراقبت پوست</h3>
+          <p class="text-xs text-fuchsia-100 mt-1">برندهای معتبر جهانی</p>
+        </div>
+        <img src="https://images.unsplash.com/photo-1596462502278-27bfdc403348?w=240&q=80&auto=format&fit=crop" alt="آرایشی" class="w-20 h-20 rounded-xl object-cover shadow-md shrink-0" />
+      </div>
+
+      <div onclick="filterProducts('home'); document.getElementById('products-section').scrollIntoView({behavior:'smooth'})" class="cursor-pointer rounded-2xl bg-gradient-to-br from-emerald-500 to-teal-700 p-5 text-white flex items-center justify-between gap-3 hover:-translate-y-1 transition shadow-xs">
+        <div>
+          <span class="text-[11px] font-bold bg-white/20 px-2 py-0.5 rounded-md">پیشنهاد طراحان</span>
+          <h3 class="font-extrabold text-base mt-2">خانه و روشنایی مدرن</h3>
+          <p class="text-xs text-emerald-100 mt-1">چراغ مطالعه و دکوراسیون</p>
+        </div>
+        <img src="https://images.unsplash.com/photo-1580481072645-022f9a6d83d0?w=240&q=80&auto=format&fit=crop" alt="چراغ رومیزی" class="w-20 h-20 rounded-xl object-cover shadow-md shrink-0" />
+      </div>
+    </section>
+
+    <!-- 5. Shop by Category (Clean White Box with Soft Colorful Backgrounds) -->
+    <section id="categories-section" class="bg-white rounded-2xl border border-gray-200/80 p-6">
+      <div class="flex items-center justify-between mb-6">
+        <h2 class="text-lg sm:text-xl font-extrabold text-gray-900">خرید بر اساس دسته‌بندی</h2>
+        <span class="text-xs text-gray-400 font-medium">تنوع بی‌نظیر کالاها</span>
+      </div>
+      <div class="grid grid-cols-3 sm:grid-cols-6 gap-4 text-center">
+        <button onclick="filterProducts('digital')" class="group flex flex-col items-center gap-2.5">
+          <div class="w-20 h-20 sm:w-24 sm:h-24 rounded-2xl bg-sky-50 border border-sky-100 p-2 overflow-hidden group-hover:shadow-md transition">
+            <img src="https://images.unsplash.com/photo-1611472173362-3f53dbd65d80?w=250&q=80&auto=format&fit=crop" alt="موبایل" class="w-full h-full object-cover rounded-xl group-hover:scale-105 transition" />
+          </div>
+          <span class="text-xs sm:text-sm font-bold text-gray-700 group-hover:text-brand-500">موبایل</span>
+        </button>
+        <button onclick="filterProducts('digital')" class="group flex flex-col items-center gap-2.5">
+          <div class="w-20 h-20 sm:w-24 sm:h-24 rounded-2xl bg-indigo-50 border border-indigo-100 p-2 overflow-hidden group-hover:shadow-md transition">
+            <img src="https://images.unsplash.com/photo-1496181133206-80ce9b88a853?w=250&q=80&auto=format&fit=crop" alt="لپ‌تاپ" class="w-full h-full object-cover rounded-xl group-hover:scale-105 transition" />
+          </div>
+          <span class="text-xs sm:text-sm font-bold text-gray-700 group-hover:text-brand-500">لپ‌تاپ و تبلت</span>
+        </button>
+        <button onclick="filterProducts('digital')" class="group flex flex-col items-center gap-2.5">
+          <div class="w-20 h-20 sm:w-24 sm:h-24 rounded-2xl bg-amber-50 border border-amber-100 p-2 overflow-hidden group-hover:shadow-md transition">
+            <img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=250&q=80&auto=format&fit=crop" alt="ساعت هوشمند" class="w-full h-full object-cover rounded-xl group-hover:scale-105 transition" />
+          </div>
+          <span class="text-xs sm:text-sm font-bold text-gray-700 group-hover:text-brand-500">ساعت و پوشیدنی</span>
+        </button>
+        <button onclick="filterProducts('fashion')" class="group flex flex-col items-center gap-2.5">
+          <div class="w-20 h-20 sm:w-24 sm:h-24 rounded-2xl bg-rose-50 border border-rose-100 p-2 overflow-hidden group-hover:shadow-md transition">
+            <img src="https://images.unsplash.com/photo-1552346154-21d32810aba3?w=250&q=80&auto=format&fit=crop" alt="مد و کفش" class="w-full h-full object-cover rounded-xl group-hover:scale-105 transition" />
+          </div>
+          <span class="text-xs sm:text-sm font-bold text-gray-700 group-hover:text-brand-500">کفش و پوشاک</span>
+        </button>
+        <button onclick="filterProducts('beauty')" class="group flex flex-col items-center gap-2.5">
+          <div class="w-20 h-20 sm:w-24 sm:h-24 rounded-2xl bg-purple-50 border border-purple-100 p-2 overflow-hidden group-hover:shadow-md transition">
+            <img src="https://images.unsplash.com/photo-1586495777744-4413f21062fa?w=250&q=80&auto=format&fit=crop" alt="زیبایی و سلامت" class="w-full h-full object-cover rounded-xl group-hover:scale-105 transition" />
+          </div>
+          <span class="text-xs sm:text-sm font-bold text-gray-700 group-hover:text-brand-500">زیبایی و سلامت</span>
+        </button>
+        <button onclick="filterProducts('home')" class="group flex flex-col items-center gap-2.5">
+          <div class="w-20 h-20 sm:w-24 sm:h-24 rounded-2xl bg-emerald-50 border border-emerald-100 p-2 overflow-hidden group-hover:shadow-md transition">
+            <img src="https://images.unsplash.com/photo-1511499767150-a48a237f0083?w=250&q=80&auto=format&fit=crop" alt="اکسسوری و خانه" class="w-full h-full object-cover rounded-xl group-hover:scale-105 transition" />
+          </div>
+          <span class="text-xs sm:text-sm font-bold text-gray-700 group-hover:text-brand-500">اکسسوری و خانه</span>
+        </button>
+      </div>
+    </section>
+
+    <!-- 6. Fresh Supermarket Colorful Split Banner (Digikala Fresh Style) -->
+    <section id="supermarket-banner" class="rounded-2xl bg-gradient-to-l from-emerald-600 via-emerald-500 to-teal-500 p-5 sm:px-8 text-white flex flex-col md:flex-row items-center justify-between gap-4 shadow-xs">
+      <div class="flex items-center gap-4">
+        <div class="w-14 h-14 rounded-xl bg-white text-emerald-600 flex items-center justify-center shrink-0 shadow-sm">
+          <svg class="w-8 h-8" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 10.5V6a3.75 3.75 0 10-7.5 0v4.5m11.356-1.993l1.263 12c.07.665-.45 1.243-1.119 1.243H4.25a1.125 1.125 0 01-1.12-1.243l1.264-12A1.125 1.125 0 015.513 7.5h12.974c.576 0 1.059.435 1.119 1.007z" />
+          </svg>
+        </div>
+        <div>
+          <div class="flex flex-wrap items-center gap-2">
+            <h3 class="font-black text-lg sm:text-xl">شگفت‌انگیز سوپرمارکتی و روزمره</h3>
+            <span class="bg-white text-emerald-700 text-xs font-black px-2.5 py-0.5 rounded-lg">تا ۴۵٪ تخفیف</span>
+          </div>
+          <p class="text-emerald-50 text-xs sm:text-sm mt-1">ارسال زیر ۴۵ دقیقه در بسته‌بندی بهداشتی و کنترل دما</p>
+        </div>
+      </div>
+
+      <div class="flex items-center gap-2.5">
+        <div class="flex -space-x-2 space-x-reverse">
+          <img src="https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=120&q=80&auto=format&fit=crop" alt="کالا" class="w-12 h-12 rounded-xl object-cover border-2 border-white bg-white" />
+          <img src="https://images.unsplash.com/photo-1586495777744-4413f21062fa?w=120&q=80&auto=format&fit=crop" alt="کالا" class="w-12 h-12 rounded-xl object-cover border-2 border-white bg-white" />
+          <img src="https://images.unsplash.com/photo-1580481072645-022f9a6d83d0?w=120&q=80&auto=format&fit=crop" alt="کالا" class="w-12 h-12 rounded-xl object-cover border-2 border-white bg-white" />
+        </div>
+        <a href="#products-section" class="px-5 py-2.5 rounded-xl bg-white text-emerald-700 font-extrabold text-xs sm:text-sm hover:bg-emerald-50 transition shadow-sm shrink-0">
+          ورود به سوپرمارکت ←
+        </a>
+      </div>
+    </section>
+
+    <!-- 7. Best Sellers & Filterable Clean Product Grid -->
+    <section id="products-section" class="bg-white rounded-2xl border border-gray-200/80 p-5 sm:p-6">
+      <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-6 border-b border-gray-100 pb-4">
+        <div>
+          <h2 class="text-lg sm:text-xl font-extrabold text-gray-900">منتخب و پرفروش‌ترین کالاها</h2>
+          <p class="text-xs text-gray-500 mt-1">انتخاب هوشمندانه از بین محبوب‌ترین محصولات فروشگاه</p>
+        </div>
+
+        <!-- Category Filter Tabs -->
+        <div id="filter-tabs" class="flex items-center gap-2 overflow-x-auto no-scrollbar pb-1 sm:pb-0">
+          <button onclick="filterProducts('all')" data-cat="all" class="filter-tab px-4 py-2 rounded-lg text-xs font-bold bg-brand-500 text-white transition shrink-0">همه کالاها</button>
+          <button onclick="filterProducts('digital')" data-cat="digital" class="filter-tab px-4 py-2 rounded-lg text-xs font-bold bg-gray-100 text-gray-600 hover:bg-gray-200 transition shrink-0">کالای دیجیتال</button>
+          <button onclick="filterProducts('fashion')" data-cat="fashion" class="filter-tab px-4 py-2 rounded-lg text-xs font-bold bg-gray-100 text-gray-600 hover:bg-gray-200 transition shrink-0">مد و پوشاک</button>
+          <button onclick="filterProducts('beauty')" data-cat="beauty" class="filter-tab px-4 py-2 rounded-lg text-xs font-bold bg-gray-100 text-gray-600 hover:bg-gray-200 transition shrink-0">زیبایی و عطر</button>
+          <button onclick="filterProducts('home')" data-cat="home" class="filter-tab px-4 py-2 rounded-lg text-xs font-bold bg-gray-100 text-gray-600 hover:bg-gray-200 transition shrink-0">خانه و اکسسوری</button>
+        </div>
+      </div>
+
+      <div id="product-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+        <!-- Injected via JS -->
+      </div>
+    </section>
+
+    <!-- 8. 2-Column Large Colorful Promo Banners -->
+    <section class="grid grid-cols-1 md:grid-cols-2 gap-4">
+      <div class="rounded-2xl bg-gradient-to-l from-slate-800 to-slate-950 p-6 sm:p-8 text-white flex items-center justify-between gap-4 overflow-hidden">
+        <div>
+          <span class="px-2.5 py-1 rounded-lg bg-sky-500/20 text-sky-300 text-xs font-bold">پیشنهاد ویژه برنامه‌نویسان</span>
+          <h3 class="text-xl sm:text-2xl font-black mt-3 mb-2">لپ‌تاپ‌های سری پرو با تخفیف نقدی</h3>
+          <p class="text-slate-300 text-xs sm:text-sm mb-4">۱۸ ماه گارانتی شرکتی + ارسال بیمه‌شده</p>
+          <button onclick="filterProducts('digital'); document.getElementById('products-section').scrollIntoView({behavior:'smooth'})" class="px-4 py-2 rounded-lg bg-sky-500 hover:bg-sky-400 text-slate-950 font-bold text-xs transition">مشاهده مدل‌ها</button>
+        </div>
+        <img src="https://images.unsplash.com/photo-1635310568932-47fd9c961c26?w=360&q=80&auto=format&fit=crop" alt="مک بوک" class="w-28 sm:w-36 h-28 sm:h-36 rounded-xl object-cover shadow-lg shrink-0" />
+      </div>
+
+      <div class="rounded-2xl bg-gradient-to-l from-violet-600 to-indigo-700 p-6 sm:p-8 text-white flex items-center justify-between gap-4 overflow-hidden">
+        <div>
+          <span class="px-2.5 py-1 rounded-lg bg-white/20 text-white text-xs font-bold">استایل کژوال و اسپرت</span>
+          <h3 class="text-xl sm:text-2xl font-black mt-3 mb-2">تیشرت و کتانی‌های تابستانه</h3>
+          <p class="text-indigo-100 text-xs sm:text-sm mb-4">تا ۳۰٪ تخفیف روی خرید سبد بالای ۲ کالا</p>
+          <button onclick="filterProducts('fashion'); document.getElementById('products-section').scrollIntoView({behavior:'smooth'})" class="px-4 py-2 rounded-lg bg-white hover:bg-indigo-50 text-indigo-700 font-bold text-xs transition">خرید از بخش مد</button>
+        </div>
+        <img src="https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=360&q=80&auto=format&fit=crop" alt="تیشرت" class="w-28 sm:w-36 h-28 sm:h-36 rounded-xl object-cover shadow-lg shrink-0" />
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Clean Digikala-style Footer -->
+  <footer id="footer" class="bg-white border-t border-gray-200 mt-10 pt-8 pb-6">
+    <div class="max-w-[1360px] mx-auto px-4">
+      <div class="flex flex-wrap items-center justify-between gap-4 pb-6 border-b border-gray-100">
+        <div>
+          <span class="font-black text-2xl text-gray-900">کالا<span class="text-brand-500">نوا</span></span>
+          <p class="text-xs text-gray-500 mt-1">تلفن پشتیبانی: ۶۱۹۳۰۰۰۰ - ۰۲۱ | ۷ روز هفته، ۲۴ ساعته پاسخگوی شما هستیم</p>
+        </div>
+        <button onclick="window.scrollTo({top: 0, behavior: 'smooth'})" class="px-4 py-2 rounded-lg border border-gray-200 hover:bg-gray-50 text-xs font-bold text-gray-600 flex items-center gap-1.5 transition">
+          <span>بازگشت به بالا</span>
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M4.5 15.75l7.5-7.5 7.5 7.5" /></svg>
+        </button>
+      </div>
+
+      <!-- Trust Pillars -->
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-4 py-7 border-b border-gray-100 text-center">
+        <div class="flex flex-col items-center gap-2">
+          <div class="w-11 h-11 rounded-xl bg-rose-50 text-brand-500 flex items-center justify-center">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M8.25 18.75a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m3 0h6m-9 0H3.375a1.125 1.125 0 01-1.125-1.125V14.25m17.25 4.5a1.5 1.5 0 01-3 0m3 0a1.5 1.5 0 00-3 0m3 0h1.125c.621 0 1.129-.504 1.09-1.124a17.902 17.902 0 00-3.213-9.193 2.056 2.056 0 00-1.58-.86H14.25" /></svg>
+          </div>
+          <span class="text-xs font-bold text-gray-700">امکان تحویل اکسپرس</span>
+        </div>
+        <div class="flex flex-col items-center gap-2">
+          <div class="w-11 h-11 rounded-xl bg-indigo-50 text-indigo-600 flex items-center justify-center">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M9 12.75L11.25 15 15 9.75m-3-7.036A11.959 11.959 0 013.598 6 11.99 11.99 0 003 9.749c0 5.592 3.824 10.29 9 11.623 5.176-1.332 9-6.03 9-11.622 0-1.31-.21-2.571-.598-3.751h-.152c-3.196 0-6.1-1.248-8.25-3.285z" /></svg>
+          </div>
+          <span class="text-xs font-bold text-gray-700">ضمانت اصل بودن کالا</span>
+        </div>
+        <div class="flex flex-col items-center gap-2">
+          <div class="w-11 h-11 rounded-xl bg-emerald-50 text-emerald-600 flex items-center justify-center">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.993 0l3.181 3.183a8.25 8.25 0 0013.803-3.7M4.031 9.865a8.25 8.25 0 0113.803-3.7l3.181 3.182m0-4.991v4.99" /></svg>
+          </div>
+          <span class="text-xs font-bold text-gray-700">۷ روز ضمانت بازگشت کالا</span>
+        </div>
+        <div class="flex flex-col items-center gap-2">
+          <div class="w-11 h-11 rounded-xl bg-amber-50 text-amber-600 flex items-center justify-center">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" stroke-width="1.8" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 18.75a60.07 60.07 0 0115.797 2.101c.727.198 1.453-.342 1.453-1.096V18.75M3.75 4.5v.75A.75.75 0 013 6h-.75m0 0v-.375c0-.621.504-1.125 1.125-1.125H20.25M2.25 6v9m18-10.5v.75c0 .414.336.75.75.75h.75m-1.5-1.5h.375c.621 0 1.125.504 1.125 1.125v9.75c0 .621-.504 1.125-1.125 1.125h-.375m1.5-1.5H21a.75.75 0 00-.75.75v.75m0 0H3.75m0 0h-.375a1.125 1.125 0 01-1.125-1.125V15m1.5 1.5v-.75A.75.75 0 003 15h-.75" /></svg>
+          </div>
+          <span class="text-xs font-bold text-gray-700">امکان پرداخت در محل</span>
+        </div>
+      </div>
+
+      <!-- Footer Links -->
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-6 py-7 text-xs">
+        <div class="space-y-2.5">
+          <h4 class="font-extrabold text-sm text-gray-900">با کالانوا</h4>
+          <a href="#" class="block text-gray-500 hover:text-brand-500">اتاق خبر کالانوا</a>
+          <a href="#" class="block text-gray-500 hover:text-brand-500">فروش در کالانوا</a>
+          <a href="#" class="block text-gray-500 hover:text-brand-500">فرصت‌های شغلی</a>
+          <a href="#" class="block text-gray-500 hover:text-brand-500">تماس با ما</a>
+        </div>
+        <div class="space-y-2.5">
+          <h4 class="font-extrabold text-sm text-gray-900">خدمات مشتریان</h4>
+          <a href="#" class="block text-gray-500 hover:text-brand-500">پاسخ به پرسش‌های متداول</a>
+          <a href="#" class="block text-gray-500 hover:text-brand-500">رویه‌های بازگرداندن کالا</a>
+          <a href="#" class="block text-gray-500 hover:text-brand-500">شرایط استفاده</a>
+          <a href="#" class="block text-gray-500 hover:text-brand-500">حریم خصوصی</a>
+        </div>
+        <div class="space-y-2.5">
+          <h4 class="font-extrabold text-sm text-gray-900">راهنمای خرید</h4>
+          <a href="#" class="block text-gray-500 hover:text-brand-500">نحوه ثبت سفارش</a>
+          <a href="#" class="block text-gray-500 hover:text-brand-500">رویه ارسال سفارش</a>
+          <a href="#" class="block text-gray-500 hover:text-brand-500">شیوه‌های پرداخت</a>
+        </div>
+        <div class="space-y-3">
+          <h4 class="font-extrabold text-sm text-gray-900">از تخفیف‌ها باخبر شوید</h4>
+          <div class="flex gap-2">
+            <input type="email" placeholder="ایمیل شما..." class="bg-gray-100 rounded-lg px-3 py-2 w-full focus:outline-none focus:ring-1 focus:ring-brand-500" />
+            <button onclick="showToast('ایمیل شما در خبرنامه ثبت شد')" class="bg-brand-500 hover:bg-brand-600 text-white font-bold px-4 rounded-lg transition">ثبت</button>
+          </div>
+          <div class="flex items-center gap-2 pt-2">
+            <div class="w-16 h-16 rounded-xl border border-gray-200 flex items-center justify-center text-[10px] font-bold text-gray-400">اینماد</div>
+            <div class="w-16 h-16 rounded-xl border border-gray-200 flex items-center justify-center text-[10px] font-bold text-gray-400">ساماندهی</div>
+          </div>
+        </div>
+      </div>
+
+      <p class="text-center text-[11px] text-gray-400 pt-4 border-t border-gray-100">
+        تمامی حقوق مادی و معنوی این وب‌سایت متعلق به فروشگاه اینترنتی کالانوا است.
+      </p>
+    </div>
+  </footer>
+
+  <!-- Interactive Slide-Over Cart Drawer -->
+  <div id="cart-overlay" onclick="toggleCart(false)" class="fixed inset-0 bg-black/40 backdrop-blur-[2px] z-50 hidden transition-opacity"></div>
+  <aside id="cart-drawer" class="fixed top-0 left-0 h-full w-full max-w-md bg-white z-50 shadow-2xl -translate-x-full transition-transform duration-300 flex flex-col">
+    <div class="p-4 border-b border-gray-200 flex items-center justify-between">
+      <h3 class="font-extrabold text-base text-gray-900">سبد خرید شما</h3>
+      <button onclick="toggleCart(false)" class="p-1.5 rounded-lg hover:bg-gray-100 text-gray-500">
+        <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" /></svg>
+      </button>
+    </div>
+    <div id="cart-items" class="flex-1 overflow-y-auto p-4 space-y-3">
+      <!-- Cart items injected here -->
+    </div>
+    <div class="p-4 border-t border-gray-200 bg-gray-50 space-y-3">
+      <div class="flex items-center justify-between text-sm">
+        <span class="text-gray-600 font-medium">جمع کل قابل پرداخت:</span>
+        <span id="cart-total" class="font-black text-lg text-gray-900">۰ تومان</span>
+      </div>
+      <button onclick="showToast('در نسخه فلسک، به درگاه پرداخت یا صفحه ثبت سفارش هدایت می‌شوید')" class="w-full py-3 rounded-xl bg-brand-500 hover:bg-brand-600 text-white font-bold text-sm transition shadow-sm">
+        تکمیل خرید و پرداخت
+      </button>
+    </div>
+  </aside>
+
+  <!-- Simple Auth Modal -->
+  <div id="auth-modal" class="fixed inset-0 bg-black/40 backdrop-blur-[2px] z-50 hidden items-center justify-center p-4">
+    <div class="bg-white rounded-2xl max-w-sm w-full p-6 shadow-xl border border-gray-100">
+      <div class="flex justify-between items-center mb-4">
+        <h3 class="font-black text-lg">ورود | ثبت‌نام</h3>
+        <button onclick="closeAuthModal()" class="text-gray-400 hover:text-gray-700">✕</button>
+      </div>
+      <p class="text-xs text-gray-500 mb-4">لطفاً شماره موبایل یا ایمیل خود را وارد کنید:</p>
+      <input type="text" placeholder="مثلاً ۰۹۱۲۳۴۵۶۷۸۹" class="w-full bg-gray-100 border border-gray-200 rounded-lg px-3.5 py-2.5 text-sm mb-4 focus:outline-none focus:border-brand-500" />
+      <button onclick="closeAuthModal(); showToast('کد تایید ارسال شد (دمو)')" class="w-full py-2.5 rounded-lg bg-brand-500 hover:bg-brand-600 text-white font-bold text-sm transition">ادامه</button>
+    </div>
+  </div>
+
+  <!-- Toast Notification -->
+  <div id="toast" class="fixed bottom-5 right-5 z-50 bg-gray-900 text-white text-xs font-bold px-4 py-3 rounded-xl shadow-lg translate-y-20 opacity-0 transition-all duration-300"></div>
+
+  <script>
+    // Verified Real Product Data
+    const products = [
+      {
+        id: 1,
+        title: "گوشی موبایل آیفون ۱۲ پرو ۲۵۶ گیگابایت",
+        category: "digital",
+        price: 42500000,
+        oldPrice: 48900000,
+        discount: 13,
+        rating: "۴.۸",
+        stockNote: "تنها ۳ عدد در انبار باقی مانده",
+        amazing: true,
+        img: "https://images.unsplash.com/photo-1603921326210-6edd2d60ca68?w=600&q=80&auto=format&fit=crop"
+      },
+      {
+        id: 2,
+        title: "هدفون بی‌سیم استودیویی با حذف نویز فعال",
+        category: "digital",
+        price: 8900000,
+        oldPrice: 11800000,
+        discount: 25,
+        rating: "۴.۹",
+        stockNote: "ارسال رایگان از انبار مرکزی",
+        amazing: true,
+        img: "https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=600&q=80&auto=format&fit=crop"
+      },
+      {
+        id: 3,
+        title: "ساعت هوشمند سری اسپرت بند سیلیکونی",
+        category: "digital",
+        price: 12400000,
+        oldPrice: 15500000,
+        discount: 20,
+        rating: "۴.۷",
+        stockNote: "موجود در ۳ رنگ",
+        amazing: true,
+        img: "https://images.unsplash.com/photo-1523275335684-37898b6baf30?w=600&q=80&auto=format&fit=crop"
+      },
+      {
+        id: 4,
+        title: "کفش رانینگ نایکی Air Zoom قرمز",
+        category: "fashion",
+        price: 5400000,
+        oldPrice: 6800000,
+        discount: 21,
+        rating: "۴.۸",
+        stockNote: "ضمانت تعویض سایز ۷ روزه",
+        amazing: true,
+        img: "https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=600&q=80&auto=format&fit=crop"
+      },
+      {
+        id: 5,
+        title: "لپ‌تاپ اولترابوک Pro X1 رم ۱۶ گیگ",
+        category: "digital",
+        price: 54000000,
+        oldPrice: 60000000,
+        discount: 10,
+        rating: "۴.۹",
+        stockNote: "۱۸ ماه گارانتی اصلی",
+        amazing: true,
+        img: "https://images.unsplash.com/photo-1496181133206-80ce9b88a853?w=600&q=80&auto=format&fit=crop"
+      },
+      {
+        id: 6,
+        title: "ادوپرفیوم مردانه و زنانه بلک گلد ۱۰۰ میل",
+        category: "beauty",
+        price: 4200000,
+        oldPrice: 5600000,
+        discount: 25,
+        rating: "۴.۶",
+        stockNote: "ماندگاری بالا و اصل",
+        amazing: true,
+        img: "https://images.unsplash.com/photo-1627384113743-6bd5a479fffd?w=600&q=80&auto=format&fit=crop"
+      },
+      {
+        id: 7,
+        title: "عینک آفتابی خلبانی کلاسیک UV400",
+        category: "home",
+        price: 2850000,
+        oldPrice: 3500000,
+        discount: 19,
+        rating: "۴.۷",
+        stockNote: "همراه با قاب چرمی",
+        amazing: false,
+        img: "https://images.unsplash.com/photo-1511499767150-a48a237f0083?w=600&q=80&auto=format&fit=crop"
+      },
+      {
+        id: 8,
+        title: "چراغ مطالعه مینیمال فلزی مشکی مات",
+        category: "home",
+        price: 1950000,
+        oldPrice: 2400000,
+        discount: 19,
+        rating: "۴.۸",
+        stockNote: "ارسال امروز تهران",
+        amazing: false,
+        img: "https://images.unsplash.com/photo-1580481072645-022f9a6d83d0?w=600&q=80&auto=format&fit=crop"
+      },
+      {
+        id: 9,
+        title: "ست کامل لوازم آرایشی و براش حرفه‌ای",
+        category: "beauty",
+        price: 3600000,
+        oldPrice: 4500000,
+        discount: 20,
+        rating: "۴.۵",
+        stockNote: "ارسال رایگان",
+        amazing: false,
+        img: "https://images.unsplash.com/photo-1596462502278-27bfdc403348?w=600&q=80&auto=format&fit=crop"
+      },
+      {
+        id: 10,
+        title: "تیشرت نخی ۱۰۰٪ پنبه یقه گرد کژوال",
+        category: "fashion",
+        price: 790000,
+        oldPrice: 980000,
+        discount: 19,
+        rating: "۴.۶",
+        stockNote: "سایزبندی S تا XXL",
+        amazing: false,
+        img: "https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?w=600&q=80&auto=format&fit=crop"
+      },
+      {
+        id: 11,
+        title: "گوشی موبایل آیفون ۱۲ ظرفیت ۱۲۸ گیگ",
+        category: "digital",
+        price: 34900000,
+        oldPrice: 38000000,
+        discount: 8,
+        rating: "۴.۷",
+        stockNote: "رجیستر شده + کد فعال‌سازی",
+        amazing: false,
+        img: "https://images.unsplash.com/photo-1611472173362-3f53dbd65d80?w=600&q=80&auto=format&fit=crop"
+      },
+      {
+        id: 12,
+        title: "کتانی بسکتبالی کلکسیون استریت استایل",
+        category: "fashion",
+        price: 6200000,
+        oldPrice: 7400000,
+        discount: 16,
+        rating: "۴.۹",
+        stockNote: "تنها ۲ جفت باقی مانده",
+        amazing: false,
+        img: "https://images.unsplash.com/photo-1552346154-21d32810aba3?w=600&q=80&auto=format&fit=crop"
+      }
+    ];
+
+    const toFa = (n) => Number(n).toLocaleString('fa-IR');
+
+    // Render Amazing Offers
+    function renderAmazing() {
+      const container = document.getElementById('amazing-slider');
+      const items = products.filter(p => p.amazing);
+      container.innerHTML = items.map(p => `
+        <div class="w-44 sm:w-48 shrink-0 bg-white rounded-xl p-3 flex flex-col justify-between shadow-xs hover:shadow-md transition">
+          <div>
+            <div class="aspect-square rounded-lg bg-gray-50 overflow-hidden mb-2.5">
+              <img src="${p.img}" alt="${p.title}" class="w-full h-full object-cover hover:scale-105 transition duration-300" />
+            </div>
+            <h3 class="text-xs font-bold text-gray-800 line-clamp-2 leading-5 h-10">${p.title}</h3>
+          </div>
+          <div class="mt-3">
+            <div class="flex items-center justify-between">
+              <span class="bg-brand-500 text-white text-[11px] font-bold px-2 py-0.5 rounded-md">${toFa(p.discount)}٪</span>
+              <div class="text-left">
+                <div class="font-black text-sm text-gray-900">${toFa(p.price)} <span class="text-[10px] font-normal text-gray-500">تومان</span></div>
+                <div class="text-[11px] line-through text-gray-400">${toFa(p.oldPrice)}</div>
+              </div>
+            </div>
+            <button onclick="addToCart(${p.id})" class="mt-2.5 w-full py-1.5 rounded-lg bg-rose-50 text-brand-600 hover:bg-brand-500 hover:text-white text-xs font-bold transition">
+              + افزودن به سبد
+            </button>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    // Render Main Product Grid
+    let currentFilter = 'all';
+    function renderProducts(list) {
+      const grid = document.getElementById('product-grid');
+      if (list.length === 0) {
+        grid.innerHTML = `<div class="col-span-full py-12 text-center text-gray-400 text-sm">محصولی با این مشخصات پیدا نشد.</div>`;
+        return;
+      }
+      grid.innerHTML = list.map(p => `
+        <div class="border border-gray-200/80 rounded-xl p-4 bg-white hover:shadow-lg transition-all duration-200 flex flex-col justify-between group">
+          <div>
+            <div class="relative aspect-square rounded-lg bg-[#f8f9fa] overflow-hidden mb-3.5">
+              <img src="${p.img}" alt="${p.title}" class="w-full h-full object-cover group-hover:scale-105 transition duration-300" />
+              <span class="absolute top-2.5 right-2.5 bg-brand-500 text-white text-[11px] font-bold px-2 py-0.5 rounded-md">${toFa(p.discount)}٪ تخفیف</span>
+            </div>
+            <div class="flex items-center justify-between text-[11px] mb-1.5">
+              <span class="text-rose-600 font-semibold">${p.stockNote}</span>
+              <span class="flex items-center gap-1 text-gray-600 font-bold">
+                <svg class="w-3.5 h-3.5 text-amber-400 fill-amber-400" viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                ${p.rating}
+              </span>
+            </div>
+            <h3 class="font-bold text-sm text-gray-800 line-clamp-2 leading-6 min-h-[48px]">${p.title}</h3>
+          </div>
+
+          <div class="mt-4 pt-3 border-t border-gray-100 flex items-center justify-between gap-2">
+            <div>
+              <div class="text-[11px] line-through text-gray-400">${toFa(p.oldPrice)}</div>
+              <div class="font-black text-base text-gray-900">${toFa(p.price)} <span class="text-[11px] font-normal text-gray-500">تومان</span></div>
+            </div>
+            <button onclick="addToCart(${p.id})" class="px-3.5 py-2 rounded-lg bg-gray-900 hover:bg-brand-500 text-white text-xs font-bold transition shrink-0">
+              افزودن به سبد
+            </button>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    function filterProducts(cat) {
+      currentFilter = cat;
+      document.querySelectorAll('.filter-tab').forEach(btn => {
+        if (btn.dataset.cat === cat) {
+          btn.className = "filter-tab px-4 py-2 rounded-lg text-xs font-bold bg-brand-500 text-white transition shrink-0";
+        } else {
+          btn.className = "filter-tab px-4 py-2 rounded-lg text-xs font-bold bg-gray-100 text-gray-600 hover:bg-gray-200 transition shrink-0";
+        }
+      });
+      const filtered = cat === 'all' ? products : products.filter(p => p.category === cat);
+      renderProducts(filtered);
+    }
+
+    // Live Search
+    function handleSearch(e) {
+      const q = e.target.value.trim();
+      const base = currentFilter === 'all' ? products : products.filter(p => p.category === currentFilter);
+      const res = q ? products.filter(p => p.title.includes(q)) : base;
+      renderProducts(res);
+    }
+    document.getElementById('search-input').addEventListener('input', handleSearch);
+    document.getElementById('mobile-search-input').addEventListener('input', handleSearch);
+
+    // Cart Logic
+    let cart = [];
+    function addToCart(id) {
+      const product = products.find(p => p.id === id);
+      const existing = cart.find(c => c.id === id);
+      if (existing) existing.qty++;
+      else cart.push({ ...product, qty: 1 });
+      updateCartUI();
+      showToast(`«${product.title}» به سبد خرید اضافه شد`);
+    }
+
+    function updateQty(id, delta) {
+      const item = cart.find(c => c.id === id);
+      if (!item) return;
+      item.qty += delta;
+      if (item.qty <= 0) cart = cart.filter(c => c.id !== id);
+      updateCartUI();
+    }
+
+    function updateCartUI() {
+      const totalQty = cart.reduce((sum, item) => sum + item.qty, 0);
+      const totalPrice = cart.reduce((sum, item) => sum + item.price * item.qty, 0);
+      document.getElementById('cart-count-badge').innerText = toFa(totalQty);
+      document.getElementById('cart-total').innerText = `${toFa(totalPrice)} تومان`;
+
+      const itemsBox = document.getElementById('cart-items');
+      if (cart.length === 0) {
+        itemsBox.innerHTML = `
+          <div class="h-full flex flex-col items-center justify-center text-center text-gray-400 py-16">
+            <svg class="w-14 h-14 mb-3 text-gray-300" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M2.25 3h1.386c.51 0 .955.343 1.087.835l.383 1.437M7.5 14.25a3 3 0 00-3 3h15.75m-12.75-3h11.218c1.121-2.3 2.1-4.684 2.924-7.138a60.114 60.114 0 00-16.536-1.84M7.5 14.25L5.106 5.272" /></svg>
+            <p class="font-bold text-sm text-gray-600">سبد خرید شما خالی است</p>
+            <p class="text-xs mt-1">می‌توانید از محصولات صفحه اصلی کالا اضافه کنید.</p>
+          </div>`;
+        return;
+      }
+
+      itemsBox.innerHTML = cart.map(item => `
+        <div class="flex items-center gap-3 p-3 rounded-xl border border-gray-200 bg-white">
+          <img src="${item.img}" alt="${item.title}" class="w-16 h-16 rounded-lg object-cover shrink-0" />
+          <div class="flex-1 min-w-0">
+            <h4 class="text-xs font-bold text-gray-800 truncate">${item.title}</h4>
+            <p class="text-xs font-black text-brand-600 mt-1">${toFa(item.price * item.qty)} تومان</p>
+            <div class="flex items-center gap-2 mt-2">
+              <button onclick="updateQty(${item.id}, 1)" class="w-6 h-6 rounded-md bg-gray-100 hover:bg-gray-200 font-bold text-sm">+</button>
+              <span class="text-xs font-bold w-5 text-center">${toFa(item.qty)}</span>
+              <button onclick="updateQty(${item.id}, -1)" class="w-6 h-6 rounded-md bg-gray-100 hover:bg-gray-200 font-bold text-sm">-</button>
+            </div>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    function toggleCart(open) {
+      const overlay = document.getElementById('cart-overlay');
+      const drawer = document.getElementById('cart-drawer');
+      if (open) {
+        overlay.classList.remove('hidden');
+        drawer.classList.remove('-translate-x-full');
+      } else {
+        overlay.classList.add('hidden');
+        drawer.classList.add('-translate-x-full');
+      }
+    }
+
+    // Hero Slider
+    let slideIndex = 0;
+    const slides = document.querySelectorAll('.hero-slide');
+    const dots = document.querySelectorAll('.dot');
+    function goToSlide(idx) {
+      slideIndex = (idx + slides.length) % slides.length;
+      slides.forEach((s, i) => {
+        s.classList.toggle('opacity-100', i === slideIndex);
+        s.classList.toggle('opacity-0', i !== slideIndex);
+        s.classList.toggle('pointer-events-none', i !== slideIndex);
+      });
+      dots.forEach((d, i) => {
+        d.className = i === slideIndex ? 'dot w-6 h-1.5 rounded-full bg-white transition-all' : 'dot w-2 h-1.5 rounded-full bg-white/50 transition-all';
+      });
+    }
+    function changeSlide(dir) { goToSlide(slideIndex + dir); }
+    setInterval(() => changeSlide(1), 5000);
+
+    // Amazing Horizontal Scroll
+    function scrollAmazing(dir) {
+      const slider = document.getElementById('amazing-slider');
+      slider.scrollBy({ left: dir * -260, behavior: 'smooth' });
+    }
+
+    // Countdown Timer
+    let remainingSeconds = 4 * 3600 + 28 * 60 + 15;
+    setInterval(() => {
+      if (remainingSeconds > 0) remainingSeconds--;
+      const h = String(Math.floor(remainingSeconds / 3600)).padStart(2, '0');
+      const m = String(Math.floor((remainingSeconds % 3600) / 60)).padStart(2, '0');
+      const s = String(remainingSeconds % 60).padStart(2, '0');
+      const formatted = `${h}:${m}:${s}`.replace(/\d/g, d => '۰۱۲۳۴۵۶۷۸۹'[d]);
+      document.getElementById('desktop-timer').innerText = formatted;
+      document.getElementById('mobile-timer').innerText = formatted;
+    }, 1000);
+
+    // Auth Modal & Toast
+    function openAuthModal() { document.getElementById('auth-modal').classList.replace('hidden', 'flex'); }
+    function closeAuthModal() { document.getElementById('auth-modal').classList.replace('flex', 'hidden'); }
+    let toastTimer;
+    function showToast(msg) {
+      const t = document.getElementById('toast');
+      t.innerText = msg;
+      t.classList.remove('translate-y-20', 'opacity-0');
+      clearTimeout(toastTimer);
+      toastTimer = setTimeout(() => t.classList.add('translate-y-20', 'opacity-0'), 2800);
+    }
+
+    // Init
+    renderAmazing();
+    renderProducts(products);
+    updateCartUI();
+  </script>
+</body>
+</html>
